@@ -1,12 +1,17 @@
 package org.lessons.java.library;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Summary {
+    private final static String FILE_PATH = "./list_of_books.txt";
+
     public static void main(String[] args) {
+
 
         Scanner scanner = new Scanner(System.in);
 
@@ -40,7 +45,7 @@ public class Summary {
         //stampa degli elementi dell'array sul file
         FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter("./list_of_books.txt", true);
+            fileWriter = new FileWriter(FILE_PATH, true);
             for (Book thisBook :
                  books) {
                 fileWriter.write(thisBook.toString() + "\n" + "-------------" + "\n");
@@ -56,7 +61,23 @@ public class Summary {
             }
         }
 
-        //
+        //lettura dal file e stampa
+        Scanner fileScanner = null;
+        try {
+            fileScanner = new Scanner(new File(FILE_PATH));
+            while (fileScanner.hasNext()){
+                String line = fileScanner.nextLine();
+                System.out.println(line);
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                fileScanner.close();
+            } catch (IllegalStateException e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 }
