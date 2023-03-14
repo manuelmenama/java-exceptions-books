@@ -15,7 +15,9 @@ public class Book {
         this.title = title;
         positiveNumberOfPage(pageNumber);
         this.pageNumber = pageNumber;
+        isEmptyAuthor(author);
         this.author = author;
+        isEmptyEditor(editor);
         this.editor = editor;
     }
 
@@ -44,6 +46,7 @@ public class Book {
     }
 
     public void setAuthor(String author) {
+        isEmptyAuthor(author);
         this.author = author;
     }
 
@@ -52,6 +55,7 @@ public class Book {
     }
 
     public void setEditor(String editor) {
+        isEmptyEditor(editor);
         this.editor = editor;
     }
 
@@ -65,6 +69,18 @@ public class Book {
     private void positiveNumberOfPage(int pageNumber) throws IllegalArgumentException{
         if (pageNumber <= 0) {
             throw new IllegalArgumentException("Il numero di pagine deve essere superiore di 0.");
+        }
+    }
+
+    private void isEmptyAuthor(String author) throws IllegalArgumentException{
+        if (author.isEmpty()){
+            throw new IllegalArgumentException("Il campo titolo non può essere vuoto.");
+        }
+    }
+
+    private void isEmptyEditor(String editor) throws IllegalArgumentException{
+        if (editor.isEmpty()){
+            throw new IllegalArgumentException("Il campo titolo non può essere vuoto.");
         }
     }
 
