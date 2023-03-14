@@ -1,5 +1,6 @@
 package org.lessons.java.library;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Summary {
@@ -26,14 +27,14 @@ public class Summary {
             try {
                 books[i] = new Book(title, pageNumber, author, editor);
             } catch (IllegalArgumentException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
+            } finally {
+                scanner.close();
             }
         }
 
-        for (int i = 0; i < books.length; i++) {
-            System.out.println("*******");
-            System.out.println(books[i]);
-        }
+
+        System.out.println(Arrays.toString(books));
 
 
     }

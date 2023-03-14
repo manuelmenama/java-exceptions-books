@@ -74,13 +74,13 @@ public class Book {
 
     private void isEmptyAuthor(String author) throws IllegalArgumentException{
         if (author.isEmpty()){
-            throw new IllegalArgumentException("Il campo titolo non può essere vuoto.");
+            throw new IllegalArgumentException("Il campo autore non può essere vuoto.");
         }
     }
 
     private void isEmptyEditor(String editor) throws IllegalArgumentException{
         if (editor.isEmpty()){
-            throw new IllegalArgumentException("Il campo titolo non può essere vuoto.");
+            throw new IllegalArgumentException("Il campo editor non può essere vuoto.");
         }
     }
 
