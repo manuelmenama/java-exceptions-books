@@ -34,7 +34,7 @@ public class Summary {
             try {
                 books[i] = new Book(title, pageNumber, author, editor);
             } catch (IllegalArgumentException e) {
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
         }
 
