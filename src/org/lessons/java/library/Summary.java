@@ -54,11 +54,14 @@ public class Summary {
             System.out.println("Impossibile creare file.");
             System.out.println(e.getMessage());
         } finally {
-            try {
-                fileWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (fileWriter != null) {
+                try {
+                    fileWriter.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
+
         }
 
         //lettura dal file e stampa
@@ -72,12 +75,15 @@ public class Summary {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } finally {
-            try {
-                fileScanner.close();
-            } catch (IllegalStateException e) {
-                e.printStackTrace();
+            if(fileScanner != null){
+                try {
+                    fileScanner.close();
+                } catch (IllegalStateException e) {
+                    e.printStackTrace();
+                }
             }
         }
+
 
     }
 }
