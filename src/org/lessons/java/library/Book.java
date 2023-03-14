@@ -89,6 +89,6 @@ public class Book {
         return "Titolo: " + title + "\n" +
                 "Numero Pagine: " + pageNumber + "\n" +
                 "Autore: " + author + "\n" +
-                "Editore: " + editor + "\n";
+                "Editore: " + editor;
     }
 }

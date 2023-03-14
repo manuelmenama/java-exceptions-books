@@ -1,5 +1,7 @@
 package org.lessons.java.library;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -28,14 +30,33 @@ public class Summary {
                 books[i] = new Book(title, pageNumber, author, editor);
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
-            } finally {
-                scanner.close();
             }
         }
 
+        scanner.close();
 
         System.out.println(Arrays.toString(books));
 
+        //stampa degli elementi dell'array sul file
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter("./list_of_books.txt", true);
+            for (Book thisBook :
+                 books) {
+                fileWriter.write(thisBook.toString() + "\n" + "-------------" + "\n");
+            }
+        } catch (IOException e) {
+            System.out.println("Impossibile creare file.");
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        //
 
     }
 }
